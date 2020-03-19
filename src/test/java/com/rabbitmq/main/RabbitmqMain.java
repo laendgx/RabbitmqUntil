@@ -7,7 +7,6 @@ public class RabbitmqMain {
 
     public static void main(String[] args) {
         RabbitmqUtil rabbitmqUtil = new RabbitmqUtil();
-        //rabbitmqUtil.send("Hello RabbitMQ");
         rabbitmqUtil.send("<PLAYLIST>" +
                 "<DEVICEID>22830001</DEVICEID>" +
                 "<DEVICEWIDTH>128</DEVICEWIDTH>" +
@@ -247,7 +246,6 @@ public class RabbitmqMain {
         rabbitmqUtil.receive();
     }
 
-
     /**
     * 发送测试
     */
@@ -255,7 +253,7 @@ public class RabbitmqMain {
     public void  queueSendTest(){
         RabbitmqUtil rabbitmqUtil = new RabbitmqUtil();
         rabbitmqUtil.send("Hello RabbitMQ");
-        rabbitmqUtil.receive();
+        //rabbitmqUtil.receive();
        }
 
 }
