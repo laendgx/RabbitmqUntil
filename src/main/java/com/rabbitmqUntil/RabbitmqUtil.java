@@ -20,8 +20,8 @@ public class RabbitmqUtil {
     private String username = "guest";
     private String password = "guest";
     private Integer port = 5672;
-    private String MyqueueName = "CollInfo";
-    private String queueName = "CollInfoKey";
+    //private String queueName = "CollInfo";
+    private String queueName = "Send";
     private String exchangeName = "jkpt";
 
     public void send(String message) {
@@ -38,7 +38,7 @@ public class RabbitmqUtil {
             // 创建通道
             channel = connection.createChannel();
             // 声明队列
-            channel.queueDeclare(queueName, false, false, false, null);
+            channel.queueDeclare(queueName, true, false, false, null);
             // 发送消息到队列之中
             channel.basicPublish(exchangeName, queueName, null, message.getBytes("UTF-8"));
         } catch (IOException e) {
@@ -68,7 +68,7 @@ public class RabbitmqUtil {
             factory.setPort(port);
             connection = factory.newConnection();
             channel = connection.createChannel();
-            channel.queueDeclare(queueName, false, false, false, null);
+            channel.queueDeclare(queueName, true, false, false, null);
             // 创建队列消费者
             Consumer consumer = new DefaultConsumer(channel) {
                 @Override
